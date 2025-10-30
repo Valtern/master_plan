@@ -1,8 +1,12 @@
 import 'task.dart';
 
 class Plan {
-  final String title;
+  final String name;
   final List<Task> tasks;
+  int get completedCount => tasks.where((task) => task.complete).length;
 
-  const Plan({this.title = '', this.tasks = const []});
+  String get completenessMessage =>
+      'Completed $completedCount out of ${tasks.length} tasks';
+
+  const Plan({this.name = '', this.tasks = const []});
 }
